@@ -4,6 +4,6 @@ using UnityEngine;
 
 public static class Vars 
 {
-    public enum BlockType { Red, Blue, Green, Yellow }
+    public enum BlockType { None, PuzzleBlock, Obstacle, Item }
     public enum AlignmentType { Left, Center, Right }
 }
