@@ -17,7 +17,17 @@ public class LevelBlock
     public GameObject prefab;
     public int color;
     public Vector2Int size = Vector2Int.one;
-    public Sprite Img { get; private set; }
+    public BlockColorSetter colorSetter;
+    public Sprite Img 
+    { 
+        get
+        {
+            if (colorSetter == null)
+                return null;
+
+            return colorSetter.sprites[color];
+        } 
+    }
 
     public LevelBlock(Vars.BlockType type, GameObject prefab, Vector2Int size, int col = 0)
     {
@@ -26,14 +36,9 @@ public class LevelBlock
         this.color = col;
         this.size = size;
 
-        BlockColorSetter colorSetter = null;
-
-        if(prefab != null)
+        if (prefab != null)
         {
             colorSetter = prefab.GetComponentInChildren<BlockColorSetter>();
         }
-
-        if(colorSetter != null)
-            Img = prefab.GetComponentInChildren<BlockColorSetter>().sprites[col];
     }
 }
